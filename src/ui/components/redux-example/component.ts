@@ -5,7 +5,7 @@ export default class ReduxExample extends Component {
   store: any;
 
   @tracked
-  state: any;
+  state: number = 0;
 
   constructor(options: object) {
     super(options);
@@ -13,6 +13,12 @@ export default class ReduxExample extends Component {
     this.store = createStore();
     this.store.subscribe(() => {
       this.state = this.store.getState();
+    });
+  }
+
+  update() {
+    this.store.dispatch({
+      type: 'ADD',
     });
   }
 }
